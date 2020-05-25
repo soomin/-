@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스파르타코딩클럽 | 자바스크립트 복습</title>
+    <script>
+        let num = 0;
+        function handleClick() {
+            // let num=0;//--여기에 넣으면 alert 안 바뀜 0부터 시작하는 조건으로 계속 돌아가니까.
+            num += 1;
+            if (num % 2 == 0) {
+                alert("짝수입니다.")
+            }
+            else {
+                alert("홀수입니다.")
+            }
+            // 클릭에 따라 다른 얼럿을 띄웁니다.
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <button onclick="handleClick()">이 버튼을 눌러보세요</button>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2주차숙제</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .wrapper {
+            width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function order() {
+            let option = $("#opinput").val();
+            
+            let name = $("#nameinput").val();
+            
+            let address=$("#adinput").val();
+            
+            let phone=$("#phinput").val()
+           
+            if (option == "수량을 선택하세요") {
+                alert("수량을 선택하세요")
+            }
+            else if (name == "") {
+                alert("이름을 입력하세요")
+            }
+            else if(address==""){
+                alert("주소를 입력하세요")
+            }
+            else if(phone==""){
+                alert("전화번호를 입력하세요")
+            }
+           
+        }
+
+       $(document).ready(function(){
+        $.ajax({
+            type:"GET",
+            url:"https://api.manana.kr/exchange/rate.json",
+            data:{},
+            success: function(response){
+             console.log(response)
+             let rate=response[1]["rate"]
+             $("#ghksdbf").append(`환율:${rate}`)
+            }
+        })
+
+
+       }
+       )
+       
+    </script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <img class=airp
+            src=data:image/jpeg;base64,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>
+        <h1><span style="color:cornflowerblue">AirPods</span> <span style="font-size: 20px;">무선이어폰</span> <span
+                style="font-size: 15px;">가격:150,000</span> <span id="ghksdbf" style="color: blue; font-size: 10px;" ></span></h1>
+                
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select" id="opinput">
+                <option selected>수량을 선택하세요</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">이름</span>
+            </div>
+            <input type="text" class="form-control" id="nameinput" placeholder="주문자 이름을 입력하세요" aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">주소</span>
+            </div>
+            <input type="text" class="form-control" id="adinput" placeholder="배송 받을 주소를 입력하세요" aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">전화번호</span>
+            </div>
+            <input type="text" class="form-control" id="phinput" placeholder="전화번호를 입력하세요" aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
+        <button onclick="order()">결제하기</button>
+
+    </div>
+
+</body>
+
+</html>

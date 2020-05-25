@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1주차 과제</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .wrapper {
+            width: 700px;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+
+        * {
+            font-family: 'Nanum Myeongjo', serif;
+        }
+
+        .button {
+            text-align: center;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <img src=https://th2.tmon.kr/thumbs/image/d62/1de/0b1/524e6fcd2_700x700_95_FIT.jpg height=500>
+        <h1 style="color: cornflowerblue;">에어팟프로 <span style="font-size: 20px;color: black;">가격:300,000</span> </h1>
+        <p>액티브 노이즈 캔슬링과 맞춤형 핏으로 새롭게. 무료 메시지 각인, 오직 온라인에서만.</p>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">주문자 이름</span>
+            </div>
+            <input type="text" class="form-control" placeholder="이름" aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <script>
+                function hey() {
+                    alert('결제가 완료되었습니다');
+                }
+
+            </script>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">주소</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">전화번호</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+        </div>
+
+        <!-- <button onclick="hey()" type="button" class="btn btn-primary">결제하기</button> -->
+        <div class="button">
+            <button onclick="hey()" type="submit" class="btn btn-primary">결제하기</button>
+        </div>
+
+
+
+
+
+
+    </div>
+</body>
+
+</html>
