@@ -1,5 +1,3 @@
 venv/
-smvenv/
 ggu/
-mjvenve/
-myenv/
+*env

@@ -30,7 +30,8 @@ def make_order():
 @app.route('/orderp', methods=['GET'])
 def read_orderlist():
     order_list=list(db.order.find({},{"_id":False}))
-    return jsonify({'result':'success', 'msg': '이 요청은 GET!','order':order_list})
+    # return jsonify({'result':'success', 'msg': '이 요청은 GET!','order':order_list})
+    return jsonify({'result':'success', 'msg': '이 요청은 GET!','order_list':order_list})
 
 
 
