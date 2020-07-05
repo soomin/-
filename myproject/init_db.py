@@ -39,7 +39,7 @@ def insert_star(url):
     data = requests.get(url, headers=headers)
 
     soup = BeautifulSoup(data.text, 'html.parser')
-    names = soup.select_one ('div.sell-wrap> h2> #viewName').text
+    names = soup.select_one('div.sell-wrap> h2> #viewName').text
     # print(names)
     
     price = soup.select_one ('dl.price-sell> dd> strong.num').get_text()
@@ -53,18 +53,18 @@ def insert_star(url):
         if "원료구성" in ingredient.text:
             ingredi = ingredient.text
             
-    # wheksqor = soup.select('#content_view_desc > .add-info')
-    # eksqor=''
-    # for wheks in wheksqor:
-    #     if "조단백" in wheks.text:
-    #         eksqor = wheks.text.split(',')
+    wheksqor = soup.select('#content_view_desc > .add-info')
+    eksqor=''
+    for wheks in wheksqor:
+        if "조단백" in wheks.text:
+            eksqor = wheks.text.split(',')
             
             
-    #     print(eksqor)
+        print(eksqor)
             
-    # img_url = soup.select_one('#content > div.article > div.mv_info_area > div.poster > img')['src']
-    # recent = soup.select_one(
-    #     '#content > div.article > div.mv_info_area > div.mv_info.character > dl > dd > a:nth-child(1)').text
+    img_url = soup.select_one('#content > div.article > div.mv_info_area > div.poster > img')['src']
+    recent = soup.select_one(
+        '#content > div.article > div.mv_info_area > div.mv_info.character > dl > dd > a:nth-child(1)').text
 
     doc = {
         'img_url' : image_url,
@@ -75,17 +75,17 @@ def insert_star(url):
         
     }
 
-    db.saryo.insert_one(doc)
-    print('완료!')
+    # db.saryo.insert_one(doc)
+    # print('완료!')
 
 # 기존 mystar 콜렉션을 삭제하고, 출처 url들을 가져온 후, 크롤링하여 DB에 저장합니다.
-def insert_all():
-    db.saryo.drop()  # mystar 콜렉션을 모두 지워줍니다.
+# def insert_all():
+#     db.saryo.drop()  # mystar 콜렉션을 모두 지워줍니다.
     
-    urls = get_urls()
-    for url in urls:
-        insert_star(url)
+#     urls = get_urls()
+#     for url in urls:
+#         insert_star(url)
 
 
-### 실행하기
-insert_all()
+# ### 실행하기
+# insert_all()

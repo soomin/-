@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import re
-
+from bson.objectid import ObjectId
 from flask import Flask, render_template, jsonify, request
 app = Flask(__name__)
 
@@ -9,6 +9,25 @@ db = client.dbsparta
 
 
 # HTML을 주는 부분
+
+
+@app.route('/<id>')
+def detail(id):
+    return render_template('detail.html', id = id)
+
+@app.route('/api/<id>', methods=['GET'])
+def detail_page(id):
+    
+    ingredient = db.saryo.find_one({'_id':ObjectId(id)}, {'_id': False})
+    
+
+
+    # print(name)
+   
+    return jsonify({'result': 'success','msg':'list 연결되었습니다!','ingredient':ingredient})
+
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -18,11 +37,19 @@ def home():
 def saryo_list():
     query = request.args.get('query', None)
     if query == None:
-        saryo = list(db.saryo.find({},{'_id':False})) 
+   
+        saryo = list(db.saryo.aggregate([
+            {'$set': {'_id': {'$toString': '$_id'}}}
+        ])) 
     else:
         rgx = re.compile(f'.*{query}.*', re.IGNORECASE)  # compile the regex    
         # 1. mystar 목록 전체를 검색합니다. ID는 제외하고 like 가 많은 순으로 정렬합니다.
-        saryo = list(db.saryo.find({'ingredient':rgx},{'_id':False})) 
+        saryo = list(db.saryo.aggregate(
+           [ 
+            {'$set':{'_id':{'$tostring':'$_id'}}},
+            {'$match':{'ingredient':rgx}}
+            ]
+            )) 
     # 참고) find({},{'_id':False}), sort()를 활용하면 굿!
     # 2. 성공하면 success 메시지와 함께 stars_list 목록을 클라이언트에 전달합니다.
     return jsonify({'result': 'success','msg':'list 연결되었습니다!','saryo_list':saryo})

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            detail_page()
+        })
+        function detail_page() {
+            // console.log('{{id}}')
+            $.ajax({
+                type: 'get',
+                url: '/api/{{id}}',
+                data: {},
+                success: function (response) {
+                    let ingredient = response['ingredient']
+                    let ing = ingredient['ingredient']
+                    let img_url = ingredient['img_url']
+                    let name = ingredient['name']
+                    
+                   
+                    console.log(ingredient,response)
+
+
+                   
+                    
+
+                    let temp_html = `<img src="${img_url}" class="card-img-top" alt="...">
+                    
+        <div class="card-body">
+          <p class="card-text">${ing}</p>
+        </div>`
+
+                    $('#card').append(temp_html)
+
+                    let button_append = `<a class="btn btn-primary" href="https://search.shopping.naver.com/search/all?where=all&frm=NVSCTAB&query=${name}" role="button">네이버 가격비교 바로가기</a>`
+                    $('#button').append(button_append)
+                }
+
+            }
+
+
+            )
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="card" id="card" style="width: 18rem;">
+
+    </div>
+    </div>
+    
+    <div id='button'>
+
+    </div>
+    
+
+</body>
+
+</html>
